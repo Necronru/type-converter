@@ -1,0 +1,40 @@
+{
+    "name": "necronru/domain-db-query",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Roman Toroshin",
+            "email": "necronru@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+        "symfony/property-info": "^3.3",
+        "psr/log": "^1.0",
+        "psr/cache": "^1.0"
+    },
+    "require-dev": {
+        "aviat/banker": "^1.0",
+        "symfony/stopwatch": "^3.3",
+        "phpunit/phpunit": "^6.4",
+        "monolog/monolog": "^1.23",
+        "symfony/var-dumper": "^3.3"
+    },
+    "suggest": {
+        "aviat/banker": "implementation for psr-6/cache"
+    },
+    "autoload": {
+        "psr-4": {
+            "Necronru\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Necronru\\Tests\\": "tests/"
+        }
+    }
+}
