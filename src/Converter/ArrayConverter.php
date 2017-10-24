@@ -3,16 +3,12 @@
 
 namespace Necronru\Converter;
 
-
-use Necronru\Converter\TypeResolver\BooleanResolver;
 use Necronru\Converter\TypeResolver\ITypeResolver;
-use Necronru\Converter\TypeResolver\ScalarResolver;
-use Necronru\Converter\TypeResolver\StringResolver;
 use Necronru\Schema\SchemaGenerator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-class Converter
+class ArrayConverter implements IArrayConverter
 {
     /**
      * @var SchemaGenerator
@@ -43,7 +39,7 @@ class Converter
         $this->resolvers = $typeResolvers;
     }
 
-    public function convert($data, $type, $strict = true)
+    public function convert(array $data, $type, $strict = true)
     {
         $this->logger->debug('start converting', ['type' => $type]);
         $isCollection = preg_match('/(.*)(\[\])$/', $type, $matches);

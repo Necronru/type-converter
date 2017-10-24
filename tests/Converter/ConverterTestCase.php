@@ -4,26 +4,26 @@
 namespace Necronru\Tests\Converter;
 
 
-use Necronru\Converter\Converter;
-use Necronru\Converter\ConverterBuilder;
+use Necronru\Converter\ArrayConverter;
+use Necronru\Converter\ArrayConverterBuilder;
 use PHPUnit\Framework\TestCase;
 
 class ConverterTestCase extends TestCase
 {
     /**
-     * @var Converter
+     * @var ArrayConverter
      */
     private $converter;
 
     public function setUp()
     {
-        $this->converter = (new ConverterBuilder())->build();
+        $this->converter = (new ArrayConverterBuilder())->build();
     }
 
     /**
-     * @return Converter
+     * @return ArrayConverter
      */
-    public function getConverter(): Converter
+    public function getConverter(): ArrayConverter
     {
         return $this->converter;
     }

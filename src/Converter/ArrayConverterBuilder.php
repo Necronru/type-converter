@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
-class ConverterBuilder
+class ArrayConverterBuilder
 {
     /**
      * @var LoggerInterface
@@ -52,11 +52,11 @@ class ConverterBuilder
 
 
     /**
-     * @return Converter
+     * @return ArrayConverter
      */
     public function build()
     {
-        return new Converter(new SchemaGenerator(new ReflectionExtractor(), $this->cache), $this->resolvers);
+        return new ArrayConverter(new SchemaGenerator(new ReflectionExtractor(), $this->cache), $this->resolvers);
     }
 
     /**
