@@ -29,14 +29,18 @@ class Converter
      */
     private $resolvers = [];
 
-    public function __construct(SchemaGenerator $schema, LoggerInterface $logger = null)
+    /**
+     * Converter constructor.
+     *
+     * @param SchemaGenerator      $schema
+     * @param ITypeResolver[]      $typeResolvers
+     * @param LoggerInterface|null $logger
+     */
+    public function __construct(SchemaGenerator $schema, array $typeResolvers, LoggerInterface $logger = null)
     {
         $this->schema = $schema;
         $this->logger = $logger ? $logger : new NullLogger();
-
-        $this->resolvers[] = new BooleanResolver($this->logger);
-        $this->resolvers[] = new StringResolver($this->logger);
-        $this->resolvers[] = new ScalarResolver($this->logger);
+        $this->resolvers = $typeResolvers;
     }
 
     public function convert($data, $type, $strict = true)
@@ -59,7 +63,7 @@ class Converter
         $key = array_keys($data);
         $size = sizeOf($key);
 
-        for ($i=0; $i<$size; $i++) {
+        for ($i = 0; $i < $size; $i++) {
             $data[$key[$i]] = $this->convertItem($data[$key[$i]], $schema, $type, $strict);
         }
 
@@ -75,7 +79,7 @@ class Converter
         $keys = array_keys($classSchema);
         $size = sizeOf($keys);
 
-        for ($i=0; $i<$size; $i++) {
+        for ($i = 0; $i < $size; $i++) {
 
             if (!key_exists($keys[$i], $data)) {
                 $this->logger->debug("skip value for \"$keys[$i]\"");

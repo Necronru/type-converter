@@ -4,24 +4,10 @@
 namespace Necronru\Tests\Converter;
 
 
-use Necronru\Converter\Converter;
 use Necronru\Tests\Contract\TestContract;
-use Necronru\Schema\SchemaGenerator;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
-class ConvertStringPropertiesTest extends TestCase
+class ConvertStringPropertiesTest extends ConverterTestCase
 {
-    /**
-     * @var \Necronru\Converter\Converter
-     */
-    protected $converter;
-
-    public function setUp()
-    {
-        $this->converter = new Converter(new SchemaGenerator(new ReflectionExtractor()));
-    }
-
     public function dataProvider()
     {
         return [
@@ -86,7 +72,7 @@ class ConvertStringPropertiesTest extends TestCase
      */
     public function testConvert($data, $expected)
     {
-        $actual = $this->converter->convert($data, TestContract::class);
+        $actual = $this->getConverter()->convert($data, TestContract::class);
 
         $this->assertEquals($expected, $actual);
 
