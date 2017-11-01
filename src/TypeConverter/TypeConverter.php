@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Necronru\Converter;
+namespace Necronru\TypeConverter;
 
-use Necronru\Converter\TypeResolver\ITypeResolver;
+use Necronru\TypeConverter\TypeResolver\ITypeResolver;
 use Necronru\Schema\SchemaGenerator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-class ArrayConverter implements IArrayConverter
+class TypeConverter implements ITypeConverter
 {
     /**
      * @var SchemaGenerator

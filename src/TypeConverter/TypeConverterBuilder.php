@@ -1,20 +1,20 @@
 <?php
 
 
-namespace Necronru\Converter;
+namespace Necronru\TypeConverter;
 
 
-use Necronru\Converter\TypeResolver\BooleanResolver;
-use Necronru\Converter\TypeResolver\ITypeResolver;
-use Necronru\Converter\TypeResolver\ScalarResolver;
-use Necronru\Converter\TypeResolver\StringResolver;
+use Necronru\TypeConverter\TypeResolver\BooleanResolver;
+use Necronru\TypeConverter\TypeResolver\ITypeResolver;
+use Necronru\TypeConverter\TypeResolver\ScalarResolver;
+use Necronru\TypeConverter\TypeResolver\StringResolver;
 use Necronru\Schema\SchemaGenerator;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
-class ArrayConverterBuilder
+class TypeConverterBuilder
 {
     /**
      * @var LoggerInterface
@@ -52,11 +52,11 @@ class ArrayConverterBuilder
 
 
     /**
-     * @return ArrayConverter
+     * @return TypeConverter
      */
     public function build()
     {
-        return new ArrayConverter(new SchemaGenerator(new ReflectionExtractor(), $this->cache), $this->resolvers);
+        return new TypeConverter(new SchemaGenerator(new ReflectionExtractor(), $this->cache), $this->resolvers);
     }
 
     /**

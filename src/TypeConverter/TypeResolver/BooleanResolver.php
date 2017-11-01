@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Necronru\Converter\TypeResolver;
+namespace Necronru\TypeConverter\TypeResolver;
 
 
 use Psr\Log\LoggerInterface;

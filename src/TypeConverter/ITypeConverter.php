@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Necronru\Converter;
+namespace Necronru\TypeConverter;
 
 
-interface IArrayConverter
+interface ITypeConverter
 {
     /**
      * Конвертирует типы данных в массиве на основе схемы данны из класса "контракта"
